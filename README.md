@@ -1,16 +1,90 @@
-# React + Vite
+# 🐶 Chibi Puppy Pop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cute arcade-style bubble popping game built with React and Vite.
 
-Currently, two official plugins are available:
+Players rescue adorable chibi puppies trapped inside colorful bubbles while avoiding enemy bubbles and collecting rainbow juice. The game includes unlockable puppy characters, score tracking, animated bubble popping, and interactive menu screens inspired by a custom Figma prototype.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Bubble popping gameplay
+- Score tracking system
+- Combo scoring for popping multiple bubbles
+- Enemy bubbles that remove points
+- Puppy collection/search page
+- Interactive settings page
+- Animated game backgrounds
+- Responsive mobile-style UI
+- React Router navigation
+- Figma-inspired design system
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Pages Included
+
+## Home / Dashboard
+- Start game button
+- Puppy Puzzle button
+- High score display
+- Navigation menu
+
+## Search Page
+- Search puppy characters
+- Browse collectible puppy cards
+
+## Settings Page
+- Music controls
+- Sound effects controls
+- Difficulty settings
+- Player stats
+
+## Detail / Gameplay Page
+- Playable bubble popping game
+- Dynamic score system
+- Enemy bubbles
+- Bubble pattern changes
+- Juice bottle mechanic
+
+## Overview Page
+- Game purpose
+- Main features
+- Design system information
+
+---
+
+# Built With
+
+- React
+- Vite
+- React Router DOM
+- CSS3
+- JavaScript (ES6)
+
+---
+
+# Design Inspiration
+
+Designed in Figma using a colorful kawaii arcade style inspired by mobile games and Material Design 3.
+
+Figma Prototype:
+
+https://www.figma.com/
+
+---
+
+# Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/LuckettJasmin-FS-4/Luckett_Jasmin_Portfolio2.git
+
+system
+
+👩‍💻 Author
+
+Jasmin Luckett
+
+GitHub:
+https://github.com/LuckettJasmin-FS-4
