@@ -73,20 +73,35 @@ function makeBoard() {
   }));
 }
 
+function getLevelFromScore(score) {
+  if (score >= 10000) return 5;
+  if (score >= 5000) return 4;
+  if (score >= 2500) return 3;
+  if (score >= 1000) return 2;
+  return 1;
+}
+
 function Detail() {
   const [board, setBoard] = useState(makeBoard());
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(
+    Number(localStorage.getItem("highScore")) || 0
+  );
+  const [level, setLevel] = useState(1);
   const [moves, setMoves] = useState(30);
   const [streak, setStreak] = useState(0);
   const [shooterColor, setShooterColor] = useState("pink");
   const [bottleColor, setBottleColor] = useState("pink");
   const [bottleFill, setBottleFill] = useState(0);
-  const [message, setMessage] = useState("Pop pink bubbles!");
+  const [message, setMessage] = useState("Level 1: Pop pink bubbles!");
 
   const musicRef = useRef(null);
 
   const shooterBubble = useMemo(() => {
-    return puppyBubbles.find((bubble) => bubble.color === shooterColor) || puppyBubbles[0];
+    return (
+      puppyBubbles.find((bubble) => bubble.color === shooterColor) ||
+      puppyBubbles[0]
+    );
   }, [shooterColor]);
 
   function playSound(type) {
@@ -114,10 +129,9 @@ function Detail() {
     }
   }
 
-  function saveHighScore(newScore) {
-    const oldHighScore = Number(localStorage.getItem("highScore")) || 0;
-
-    if (newScore > oldHighScore) {
+  function updateHighScore(newScore) {
+    if (newScore > highScore) {
+      setHighScore(newScore);
       localStorage.setItem("highScore", String(newScore));
     }
   }
@@ -140,15 +154,23 @@ function Detail() {
       const newStreak = streak + 1;
       const points = 100 * newStreak;
       const newScore = score + points;
+      const newLevel = getLevelFromScore(newScore);
       const nextColor = randomItem(shooterColors);
 
       setScore(newScore);
-      saveHighScore(newScore);
+      updateHighScore(newScore);
+      setLevel(newLevel);
       setStreak(newStreak);
       setBottleColor(item.color);
       setBottleFill((fill) => Math.min(fill + 12, 100));
       setShooterColor(nextColor);
-      setMessage(`Correct! +${points} points. Now pop ${nextColor} bubbles!`);
+
+      if (newLevel > level) {
+        setMessage(`Level ${newLevel}! +${points} points. Now pop ${nextColor} bubbles!`);
+      } else {
+        setMessage(`Correct! +${points} points. Now pop ${nextColor} bubbles!`);
+      }
+
       setBoard(makeBoard());
     } else {
       playSound("wrong");
@@ -163,12 +185,13 @@ function Detail() {
 
     setBoard(makeBoard());
     setScore(0);
+    setLevel(1);
     setMoves(30);
     setStreak(0);
     setShooterColor("pink");
     setBottleColor("pink");
     setBottleFill(0);
-    setMessage("Pop pink bubbles!");
+    setMessage("Level 1: Pop pink bubbles!");
   }
 
   return (
@@ -176,10 +199,12 @@ function Detail() {
       <MenuButtons />
 
       <section className="game-hud">
-        <p>Score: {score}</p>
-        <p>Moves: {moves}</p>
-        <p>Streak: {streak}</p>
-        <p>Target: {shooterColor}</p>
+        <p>⭐ Score: {score}</p>
+        <p>🏆 High Score: {highScore}</p>
+        <p>🎮 Level: {level}</p>
+        <p>💖 Moves: {moves}</p>
+        <p>🔥 Streak: {streak}</p>
+        <p>🎯 Target: {shooterColor}</p>
       </section>
 
       <button className="music-button" onClick={toggleMusic}>

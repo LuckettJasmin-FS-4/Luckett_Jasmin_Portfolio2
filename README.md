@@ -240,6 +240,23 @@ npm run dev
 ## Design Inspiration
 
 Designed in Figma using a colorful kawaii arcade style inspired by mobile games and Material Design 3.
+# Milestone 4 Updates
+
+## Styling Choice
+I used custom CSS and a kawaii arcade design style inspired by mobile games and Material Design 3.
+
+## Functionality Updates
+- Added gameplay improvements
+- Added API integration
+- Added local storage
+- Added animations
+- Improved navigation
+
+## Future Improvements
+- More levels
+- More puppy characters
+- Additional puzzle features
+- Online leaderboard
 
 Figma Prototype:
 
